@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\SitioController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,6 @@ Route::get('/', function () {
 #Contacto Routes
 Route::get('/contacto/{tipo?}', [SitioController::class, 'contactoForm']);
 Route::post('/validar-contacto', [SitioController::class, 'contactoStore']);
+
+#Curso Routes
+Route::resource('curso', CursoController::class);
