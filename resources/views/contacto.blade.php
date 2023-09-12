@@ -7,6 +7,15 @@
 </head>
 <body>
     <h1>Formulario de Contacto</h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <h3>
         {{ $tipo }}
     </h3>
@@ -18,9 +27,15 @@
             value="@alumnos.udg.mx"
         @else
             value="@gmail.com"
-        @endif><br>
+        @endif>
+        @error('email')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror<br>
         <label for="comentario">Comentario</label><br>
-        <textarea name="comentario" cols="30" rows="10"></textarea><br>
+        <textarea name="comentario" cols="30" rows="10"></textarea>
+        @error('comentario')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror<br><br>
         <button type="submit" class="submit">Submit</button>
     </form>
 </body>
